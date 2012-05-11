@@ -25,11 +25,16 @@ typedef std::map<size_t, SpellingType> VertexMap;
 typedef std::map<size_t, SpellingMap> EndVertexMap;
 typedef std::map<size_t, EndVertexMap> EdgeMap;
 
+typedef std::vector<const SpellingProperties*> SpellingPropertiesList;
+typedef std::map<SyllableId, SpellingPropertiesList> SpellingIndexBySyllableId;
+typedef std::map<size_t, SpellingIndexBySyllableId> SpellingIndex;
+
 struct SyllableGraph {
   size_t input_length;
   size_t interpreted_length;
   VertexMap vertices;
   EdgeMap edges;
+  SpellingIndex index;
   SyllableGraph() : input_length(0), interpreted_length(0) {}
 };
 
@@ -43,6 +48,7 @@ class Syllabifier {
 
  protected:
   void CheckOverlappedSpellings(SyllableGraph *graph, size_t start, size_t end);
+  void Transpose(SyllableGraph* graph);
   
   std::string delimiters_;
   bool enable_completion_;
