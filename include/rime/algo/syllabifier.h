@@ -26,15 +26,15 @@ typedef std::map<size_t, SpellingMap> EndVertexMap;
 typedef std::map<size_t, EndVertexMap> EdgeMap;
 
 typedef std::vector<const SpellingProperties*> SpellingPropertiesList;
-typedef std::map<SyllableId, SpellingPropertiesList> SpellingIndexBySyllableId;
-typedef std::map<size_t, SpellingIndexBySyllableId> SpellingIndex;
+typedef std::map<SyllableId, SpellingPropertiesList> SpellingIndex;
+typedef std::map<size_t, SpellingIndex> SpellingIndices;
 
 struct SyllableGraph {
   size_t input_length;
   size_t interpreted_length;
   VertexMap vertices;
   EdgeMap edges;
-  SpellingIndex index;
+  SpellingIndices indices;
   SyllableGraph() : input_length(0), interpreted_length(0) {}
 };
 

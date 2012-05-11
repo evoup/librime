@@ -133,13 +133,13 @@ bool UserDictionary::loaded() const {
 void UserDictionary::DfsLookup(const SyllableGraph &syll_graph, size_t current_pos,
                                const std::string &current_prefix,
                                DfsState *state) {
-  SpellingIndex::const_iterator index = syll_graph.index.find(current_pos);
-  if (index == syll_graph.index.end()) {
+  SpellingIndices::const_iterator index = syll_graph.indices.find(current_pos);
+  if (index == syll_graph.indices.end()) {
     return;
   }
   EZDBGONLYLOGGERPRINT("dfs lookup starts from %d.", current_pos);
   std::string prefix;
-  BOOST_FOREACH(const SpellingIndexBySyllableId::value_type& spelling, index->second) {
+  BOOST_FOREACH(const SpellingIndex::value_type& spelling, index->second) {
     if (spelling.second.empty()) continue;
     const SpellingProperties* props = spelling.second[0];
     size_t end_pos = props->end_pos;

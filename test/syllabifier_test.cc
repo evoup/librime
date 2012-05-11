@@ -158,11 +158,11 @@ TEST_F(RimeSyllabifierTest, TransposedSyllableGraph) {
   rime::SyllableGraph g;
   const std::string input("changan");
   s.BuildSyllableGraph(input, *prism_, &g);
-  ASSERT_FALSE(g.index.end() == g.index.find(0));
-  EXPECT_EQ(2, g.index[0].size());
-  EXPECT_FALSE(g.index[0].end() == g.index[0].find(syllable_id_["chan"]));
-  EXPECT_FALSE(g.index[0].end() == g.index[0].find(syllable_id_["chang"]));
-  ASSERT_EQ(1, g.index[0][syllable_id_["chan"]].size());
-  ASSERT_FALSE(NULL == g.index[0][syllable_id_["chan"]][0]);
-  EXPECT_EQ(4, g.index[0][syllable_id_["chan"]][0]->end_pos);
+  ASSERT_FALSE(g.indices.end() == g.indices.find(0));
+  EXPECT_EQ(2, g.indices[0].size());
+  EXPECT_FALSE(g.indices[0].end() == g.indices[0].find(syllable_id_["chan"]));
+  EXPECT_FALSE(g.indices[0].end() == g.indices[0].find(syllable_id_["chang"]));
+  ASSERT_EQ(1, g.indices[0][syllable_id_["chan"]].size());
+  ASSERT_FALSE(NULL == g.indices[0][syllable_id_["chan"]][0]);
+  EXPECT_EQ(4, g.indices[0][syllable_id_["chan"]][0]->end_pos);
 }

@@ -199,7 +199,7 @@ void Syllabifier::CheckOverlappedSpellings(SyllableGraph *graph, size_t start, s
 
 void Syllabifier::Transpose(SyllableGraph* graph) {
   BOOST_FOREACH(const EdgeMap::value_type& start, graph->edges) {
-    SpellingIndexBySyllableId& index(graph->index[start.first]);
+    SpellingIndex& index(graph->indices[start.first]);
     BOOST_REVERSE_FOREACH(const EndVertexMap::value_type& end, start.second) {
       BOOST_FOREACH(const SpellingMap::value_type& spelling, end.second) {
         SyllableId syll_id = spelling.first;
